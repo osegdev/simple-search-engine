@@ -1,9 +1,14 @@
+from app.infrastructure.document_loader import DocumentLoader
 from app.domain.index import InvertedIndex
 
-index = InvertedIndex()
-index.add_document("doc1", "Hola mundo, este es un documento.")
-index.add_document("doc2", "Hola, esto es otro ejemplo de texto.")
+loader = DocumentLoader("documents")
+documents = loader.load_documents()
 
-print("Buscar 'hola':", index.search("hola"))       # ['doc1', 'doc2']
-print("Buscar 'documento':", index.search("documento"))  # ['doc1']
-print("Buscar 'python':", index.search("python"))    # []
+index = InvertedIndex()
+for doc in documents:
+    index.add_document(doc.id, doc.content)
+
+# Probar búsquedas
+print("Buscar 'documento':", index.search("documento"))
+print("Buscar 'texto':", index.search("texto"))
+print("Buscar 'clave':", index.search("clave"))
