@@ -1,11 +1,20 @@
 from typing import Dict, List
+from collections import defaultdict
+import re
 
 class InvertedIndex:
     def __init__(self):
-        self.index: Dict[str, List[str]] = {}
+        self.index: Dict[str, List[str]] = defaultdict(list)
 
-    def add(self, word: str, doc_id: str):
-        self.index.setdefault(word, []).append(doc_id)
+    def add_document(self, document_id: str, content: str):
+        words = self._tokenize(content)
+        for word in words:
+            if document_id not in self.index[word]:
+                self.index[word].append(document_id)
 
-    def search(self, word: str) -> List[str]:
-        return self.index.get(word, [])
+    def search(self, query: str) -> List[str]:
+        return self.index.get(query.lower(), [])
+
+    def _tokenize(self, text: str) -> List[str]:
+        # Tokenización básica: elimina puntuación y convierte a minúsculas
+        return re.findall(r'\b\w+\b', text.lower())
