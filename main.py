@@ -20,3 +20,6 @@ print("Búsqueda por frecuencia:", engine.search("documento prueba"))
 
 engine.set_strategy(TFIDFSearch(index))
 print("Búsqueda TF-IDF:", engine.search("documento prueba"))
+
+print("Autocompletado para 'do':", index.trie.autocomplete("do"))
+print("Autocompletado para 'bus':", index.trie.autocomplete("bus"))
