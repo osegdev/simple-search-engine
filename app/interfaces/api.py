@@ -5,6 +5,9 @@ from app.use_cases.boolean_search import BooleanSearch
 from app.domain.index import InvertedIndex
 from app.infrastructure.document_loader import DocumentLoader
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi import FastAPI, HTTPException, Query
+import re
+
 
 app = FastAPI(title="Simple Search Engine API")
 
@@ -17,9 +20,12 @@ for doc in docs:
 
 engine = SearchEngine(BooleanSearch(index))
 
-@app.get("/search", response_model=List[str])
-def search(q: str = Query(..., min_length=1)):
-    return engine.search(q)
+@app.get("/search")
+def search(q: str = Query(..., min_length=2, max_length=100)):
+    clean_q = re.sub(r"[^a-zA-Z0-9áéíóúüñ\s]", "", q.lower().strip())
+    if not clean_q:
+        raise HTTPException(status_code=400, detail="Consulta inválida.")
+    return engine.search(clean_q)
 
 app.add_middleware(
     CORSMiddleware,
