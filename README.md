@@ -1,5 +1,5 @@
 # 🔍 Simple Search Engine
-
+![Preview](./preview.png)
 This is a minimalist Google-style search engine, developed with Python (FastAPI) and React (Vite), that allows real-time searching of `.txt` documents. Fully dockerized, modern, and extensible.
 
 ---
