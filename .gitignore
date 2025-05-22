@@ -1,15 +1,19 @@
-# Entorno virtual
-venv/
-
-# Archivos de Python
+# Python
 __pycache__/
 *.py[cod]
-*.pyo
-
-# Archivos de VSCode
-.vscode/
-
-# Archivos temporales
-*.log
-*.sqlite3
 *.env
+venv/
+.env
+
+# Node
+node_modules/
+dist/
+*.log
+
+# Docker
+*.tar
+*.pid
+
+# VSCode
+.vscode/
+.DS_Store

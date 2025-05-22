@@ -1,18 +1,26 @@
-Simple Search Engine 🔍
-This is a minimalist search engine project, inspired by Google, that uses data structures (inverted indexes, trees, dictionaries) and search algorithms (binary, recursive, heuristic) to find text in indexed documents.
+# 🔍 Simple Search Engine
 
-Features
-Keyword search
+This is a minimalist Google-style search engine, developed with Python (FastAPI) and React (Vite), that allows real-time searching of `.txt` documents. Fully dockerized, modern, and extensible.
 
-Ranking by frequency
+---
 
-Graphical User Interface (GUI)
+## 🧰 Technologies Used
 
-Python backend with clean architecture
+- **Frontend:** React + Vite + CSS Modules  
+- **Backend:** FastAPI + Uvicorn  
+- **Search Engine:** Inverted index + Basic search algorithms  
+- **Infrastructure:** Docker, Docker Compose  
+- **Testing:** Pytest  
+- **Style:** Clean, responsive modern CSS  
 
-Requirements
-Python 3.8+
+---
 
-WSL2 (Ubuntu)
+## 🚀 How to Run the Project
 
-VS Code
+> Requirements: Have [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed and running.
+
+### 1. Clone the repository
+
+```bash
+git clone <REPO_URL>
+cd simple-search-engine
