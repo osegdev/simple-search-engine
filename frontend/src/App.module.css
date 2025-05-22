@@ -1,38 +1,80 @@
 .container {
-  max-width: 640px;
-  margin: 2rem auto;
-  padding: 1rem;
-  font-family: sans-serif;
+  max-width: 600px;
+  margin: 4rem auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9f9f9;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #1d4ed8;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.title::before {
+  content: "🔍";
   font-size: 2rem;
-  font-weight: bold;
-  color: #1d4ed8; /* azul moderno */
-  margin-bottom: 1rem;
 }
 
 .input {
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.75rem 1rem;
   font-size: 1rem;
-  margin-bottom: 0.5rem;
+  border: 2px solid #ccc;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  transition: border-color 0.3s;
+}
+
+.input:focus {
+  border-color: #1d4ed8;
+  outline: none;
 }
 
 .button {
-  padding: 0.5rem 1rem;
   background-color: #2563eb;
   color: white;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
   border: none;
+  border-radius: 0.5rem;
   cursor: pointer;
-  margin-bottom: 1rem;
+  transition: background-color 0.2s;
 }
 
 .button:hover {
   background-color: #1d4ed8;
 }
 
+.results {
+  margin-top: 2rem;
+  list-style: none;
+  padding: 0;
+}
+
 .result {
-  border-bottom: 1px solid #ccc;
-  padding: 0.5rem 0;
+  padding: 0.75rem 1rem;
+  background: white;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-left: 4px solid #1d4ed8;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.result::before {
+  content: "📄";
+  font-size: 1.2rem;
 }

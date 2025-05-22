@@ -33,7 +33,7 @@ function App() {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>🔍 Search Engine</h1>
+      <h1 className={styles.title}>Search Engine</h1>
 
       <input
         className={styles.input}
@@ -47,10 +47,10 @@ function App() {
         Buscar
       </button>
 
-      <ul>
+      <ul className={styles.results}>
         {results.map((r, idx) => (
           <li key={idx} className={styles.result}>
-            📄 {r}
+            {r}
           </li>
         ))}
       </ul>

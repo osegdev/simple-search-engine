@@ -14,14 +14,6 @@ from fastapi import status
 
 app = FastAPI(title="Simple Search Engine API")
 
-#Loads and indexes documents on start
-loader = DocumentLoader("documents")
-docs = loader.load_documents()
-index = InvertedIndex()
-for doc in docs:
-    index.add_document(doc.id, doc.content)
-
-engine = SearchEngine(BooleanSearch(index))
 
 @app.get("/search")
 def search(q: str = Query(..., min_length=2, max_length=100)):
@@ -30,7 +22,16 @@ def search(q: str = Query(..., min_length=2, max_length=100)):
     if not clean_q:
         logger.warning("Invalid query: '%s'", q)
         raise HTTPException(status_code=400, detail="Invalid query")
-    
+
+    # Carga e indexa documentos cada vez que se hace una búsqueda
+    loader = DocumentLoader("documents")
+    docs = loader.load_documents()
+    index = InvertedIndex()
+    for doc in docs:
+        index.add_document(doc.id, doc.content)
+
+    engine = SearchEngine(BooleanSearch(index))
+
     logger.info("Consulta recibida: '%s'", clean_q)
     results = engine.search(clean_q)
     logger.info("Resultados encontrados: %s", results)
